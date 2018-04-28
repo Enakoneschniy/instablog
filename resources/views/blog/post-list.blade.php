@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-    <ul>
+    <div class="container">
         @foreach($posts as $post)
-            <li>
-                <h2>{{ $post->title }}</h2>
-            </li>
+            <div class="card mb-3">
+                <img class="card-img-top" src="{{ $post->image }}" alt="{{ $post->title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $post->title }}</h5>
+                    <p class="card-text">{{ $post->preview_text }}</p>
+                    <a href="{{route('post-detail', [$post->id])}}" class="btn btn-primary">Read more...</a>
+                </div>
+            </div>
         @endforeach
-    </ul>
-@endsection
-
-@section('sidebar')
-    <h1>I am a sidebar!</h1>
+    </div>
 @endsection

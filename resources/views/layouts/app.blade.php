@@ -70,9 +70,6 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <aside>
-            @yield('sidebar')
-        </aside>
     </div>
 </body>
 </html>

@@ -27,7 +27,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -49,7 +48,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('blog.post-detail', [
+            'post' => $post
+        ]);
     }
 
     /**

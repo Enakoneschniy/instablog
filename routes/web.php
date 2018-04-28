@@ -11,7 +11,21 @@
 |
 */
 
-Route::get('blog', 'PostController@index');
+
+
+Route::get('blog', 'PostController@index')->name('blog');
+Route::get('post/{id}', 'PostController@show')
+    ->name('post-detail')
+    ->where('id', '[0-9]+');
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    Route::get('users', function () {
+        return '<h1>Users</h1>';
+    });
+});
 
 Route::get('/', function () {
     return view('welcome');
