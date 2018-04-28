@@ -14,8 +14,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        dd($posts[0]);
+        $postList = Post::all();
+        return view('blog.post-list', [
+            'posts' => $postList
+        ]);
     }
 
     /**
