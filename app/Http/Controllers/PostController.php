@@ -14,20 +14,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        $postList = Post::all();
+        $postList = Post::paginate(3);
         return view('blog.post-list', [
             'posts' => $postList
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +29,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'title' => 'string|required|min:20|max:255',
+            'preview_text' => 'string|required|max:100',
+            'detail_text' => 'string|required',
+        ]);
+        $fields = $request->toArray();
+        $fields['image'] = '';
+        $fields['slug'] = str_slug($request->title);
+        Post::create($fields);
+        return redirect()->back();
+        //dd($request->toArray());
     }
 
     public function show(Post $post)

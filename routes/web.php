@@ -22,9 +22,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('users', function () {
-        return '<h1>Users</h1>';
-    });
+    Route::view('create-post', 'blog.create-post');
+    Route::post('store-post', 'PostController@store')
+    ->name('store-post');
 });
 
 Route::get('/', function () {
