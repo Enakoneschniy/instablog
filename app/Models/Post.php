@@ -14,9 +14,13 @@ class Post extends Model
         'title',
         'preview_text',
         'detail_text',
-        'image'
+        'image',
+        'slug'
     ];
 
+    public function getRouteKeyName() {
+        return 'slug';
+    }
 
     public function tags() {
         return $this->belongsToMany(Tag::class, 'post_tag');

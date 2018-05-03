@@ -14,9 +14,9 @@
 
 
 Route::get('blog', 'PostController@index')->name('blog');
-Route::get('post/{id}', 'PostController@show')
+Route::get('post/{post}', 'PostController@show')
     ->name('post-detail')
-    ->where('id', '[0-9]+');
+    ->where('post', '[a-z\-]+');
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/', function () {

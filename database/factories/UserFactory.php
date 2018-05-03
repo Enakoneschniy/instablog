@@ -24,10 +24,12 @@ $factory->define(App\User::class, function (Faker $faker) {
 $factory->define(App\Models\Post::class, function (Faker $faker) {
     $imageUrl = $faker->image('public/uploads/images', 640, 480, 'cats');
     $imageUrl = str_replace('public','', $imageUrl);
+    $title = $faker->sentence;
     return [
-        'title' => $faker->sentence,
+        'title' => $title,
         'preview_text' => $faker->realText(100),
         'detail_text' => $faker->paragraphs(20, true),
-        'image' => $imageUrl
+        'image' => $imageUrl,
+        'slug' => str_slug($title)
     ];
 });

@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $post->title }}</h5>
                     <p class="card-text">{{ $post->preview_text }}</p>
-                    <a href="{{route('post-detail', [$post->id])}}" class="btn btn-primary">Read more...</a>
+                    <a href="{{route('post-detail', [$post->slug])}}" class="btn btn-primary">Read more...</a>
                 </div>
             </div>
         @endforeach
